@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE22EC352D28377B00D1AF13 /* TransferError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE22EC342D28377B00D1AF13 /* TransferError.swift */; };
 		EE8A4E9B2D281AE9004569E6 /* ImagePredictorDeps in Frameworks */ = {isa = PBXBuildFile; productRef = EE8A4E9A2D281AE9004569E6 /* ImagePredictorDeps */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EE22EC2B2D281B5300D1AF13 /* ImagePredictorDeps */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ImagePredictorDeps; sourceTree = "<group>"; };
+		EE22EC342D28377B00D1AF13 /* TransferError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferError.swift; sourceTree = "<group>"; };
 		EEAD6AED2D27F44F003D5EA5 /* ImagePredictor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePredictor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -45,6 +47,7 @@
 		EEAD6AE42D27F44F003D5EA5 = {
 			isa = PBXGroup;
 			children = (
+				EE22EC342D28377B00D1AF13 /* TransferError.swift */,
 				EEAD6AEF2D27F44F003D5EA5 /* ImagePredictor */,
 				EEAD6AEE2D27F44F003D5EA5 /* Products */,
 				EE5C58322D2814A90033924B /* Frameworks */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE22EC352D28377B00D1AF13 /* TransferError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

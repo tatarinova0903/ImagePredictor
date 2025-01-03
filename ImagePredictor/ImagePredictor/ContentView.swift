@@ -6,19 +6,27 @@
 //
 
 import SwiftUI
+import PhotosUI
 import ComposableArchitecture
 
 struct ContentView: View {
     let store: StoreOf<Feature>
+    @State private var imageSelection: PhotosPickerItem? = nil
 
     var body: some View {
-        VStack {
-            Text("\(store.image)")
-            Button("Choose your image") {
-                store.send(.imageSelected)
+        VStack(spacing: 10) {
+            SelectedImage(imageState: store.imageState)
+                .padding(10)
+            PhotosPicker(
+                selection: $imageSelection,
+                matching: .images
+            ) {
+                Text("Choose your image")
             }
         }
-        .padding()
+        .onChange(of: imageSelection) { _, newValue in
+            store.send(.imageSelected(newValue))
+        }
     }
 }
 
