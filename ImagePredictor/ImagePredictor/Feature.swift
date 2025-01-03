@@ -14,18 +14,24 @@ struct Feature {
     @ObservableState
     struct State {
         var imageState = ImageState.empty
+        var prediction: String?
     }
 
     enum Action {
         case imageSelected(PhotosPickerItem?)
         case imageLoaded(ImageState)
+        case predictionIsReady(String)
     }
+
+    @ObservationIgnored
+    @Dependency(ImagePredictorClient.self) var predictor
 
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
             case let .imageSelected(pickerItem):
                 guard let pickerItem else { return .none }
+                state.prediction = nil
                 state.imageState = .loading
                 return .run { send in
                     let imageState = await loadTransferable(from: pickerItem)
@@ -33,6 +39,12 @@ struct Feature {
                 }
             case let .imageLoaded(imageState):
                 state.imageState = imageState
+                return .run { send in
+                    let prediction = predictor.predict()
+                    await send(.predictionIsReady(prediction))
+                }
+            case let .predictionIsReady(prediction):
+                state.prediction = prediction
                 return .none
             }
         }

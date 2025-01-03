@@ -23,6 +23,7 @@ struct ContentView: View {
             ) {
                 Text("Choose your image")
             }
+            Text(store.prediction ?? "")
         }
         .onChange(of: imageSelection) { _, newValue in
             store.send(.imageSelected(newValue))
