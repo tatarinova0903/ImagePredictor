@@ -1,3 +1,5 @@
 argparse
 ultralytics
 coremltools
+numpy
+scikit-learn
