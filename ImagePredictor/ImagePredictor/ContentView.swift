@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct ContentView: View {
+    let store: StoreOf<Feature>
+
     var body: some View {
         VStack {
+            Text("\(store.image)")
             Button("Choose your image") {
-                
+                store.send(.imageSelected)
             }
         }
         .padding()
@@ -19,5 +23,9 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(
+        store: Store(initialState: Feature.State()) {
+            Feature()
+        }
+    )
 }
