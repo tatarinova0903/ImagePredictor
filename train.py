@@ -32,5 +32,5 @@ print(args)
 from ultralytics import YOLO
 
 yolo_model=YOLO(args.model)
-yolo_model.train(data=args.dataset_path, epochs=args.epochs_count, augment=True)
-yolo_model.export(format='mlmodel',nms=True, half=args.half, int8=args.int8)
+yolo_model.train(data=args.dataset_path, epochs=int(args.epochs_count), augment=True)
+yolo_model.export(format='mlmodel', nms=True, half=bool(args.half), int8=bool(args.int8))
