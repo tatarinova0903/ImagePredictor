@@ -13,8 +13,8 @@ struct SelectedImage: View {
 
     var body: some View {
         switch imageState {
-        case .success(let image):
-            image
+        case .success(let uiImage):
+            Image(uiImage: uiImage)
                 .resizable()
                 .scaledToFit()
         case .loading:
